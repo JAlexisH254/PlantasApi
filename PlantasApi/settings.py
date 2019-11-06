@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'plantas.apps.PlantasConfig',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',

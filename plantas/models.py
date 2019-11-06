@@ -32,9 +32,18 @@ class Prevencion (models.Model):
 	descripcion_prevencion = models.TextField (null = True, blank=True)
 
 class Diagnostico (models.Model):
+	id_cultivo=models.ForeignKey(Cultivo,on_delete=models.CASCADE)
 	id_enfermedad = models.ForeignKey (Enfermedad, on_delete=models.CASCADE)
 	id_tratamiento = models.ForeignKey (Tratamiento, on_delete=models.CASCADE)
 	id_prevencion = models.ForeignKey (Prevencion, on_delete=models.CASCADE)
+
+class Historia (models.Model):
+	
+	fecha_historia=models.DateField()
+	coordenaday_historia=models.FloatField()
+	coordenadax_historia=models.FloatField()
+	id_diagnostico=models.FloatField()
+
 	
 
 

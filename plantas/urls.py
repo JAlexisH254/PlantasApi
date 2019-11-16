@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.urls import path
 
 from rest_framework.authtoken import views
-from plantas.views import AfeccionList, CultivoList
+from plantas.views import *
 
 urlpatterns = [
     path('enfermedades/', AfeccionList.as_view()),

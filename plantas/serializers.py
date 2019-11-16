@@ -1,14 +1,18 @@
 from rest_framework import serializers
 
-from plantas.models import Enfermedad, Cultivo
+from plantas.models import Afeccion, Cultivo, Usuario
 
-class EnfermedadSerializer(serializers.ModelSerializer):
+class AfeccionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Enfermedad
-        fields = ["id", "nombre_enfermedad"]
+        model = Afeccion
+        fields = ["id", "nombre_afeccion"]
 
 class CultivoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cultivo
         fields = ["id", "nombre_cultivo"]
-    
+
+class UsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ["id", "nombre_usuario"]    

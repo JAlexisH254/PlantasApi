@@ -8,7 +8,7 @@ from plantas.models import *
 # Create your views here.
 
 class AfeccionList(generics.ListAPIView):
-    serializer_class = AfeccionSerializer
+    serializer_class = BusquedaAfeccionSerializer
     queryset = Afeccion.objects.all()
 
 class CultivoList(generics.ListAPIView):

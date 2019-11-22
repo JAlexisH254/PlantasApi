@@ -1,5 +1,5 @@
 from django.contrib import admin
-from plantas.models import Afeccion,Cultivo
+from plantas.models import *
 # Register your models here.
 
 admin.site.register(Afeccion)

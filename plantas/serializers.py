@@ -50,7 +50,7 @@ class UsuarioCultivoSerializer(serializers.ModelSerializer):
     Cultivo = CultivoSerializer(many=False)
     class Meta:
         model = UsuarioCultivo
-        fields = ["id", "usuario","diagnostico","cultivo"]    
+        fields = ["id", "usuario","diagnostico","cultivo","imagen_usuarioCultivo"]    
 
 class PrevencionSerializer(serializers.ModelSerializer):
     class Meta:

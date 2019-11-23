@@ -35,6 +35,8 @@ class UsuarioCultivo (models.Model):
 	usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
 	cultivo = models.ForeignKey(Cultivo, on_delete = models.CASCADE)
 	diagnostico = models.ForeignKey(Diagnostico, on_delete = models.CASCADE)
+	imagen_usuarioCultivo = models.ImageField()
+	
 
 class CultivoAfeccion(models.Model):
 	cultivo = models.ForeignKey(Cultivo, on_delete = models.CASCADE)

@@ -43,6 +43,7 @@ class DiagnosticoSerializer(serializers.ModelSerializer):
         model = Diagnostico
         fields = ["id", "afeccion"]  
 
+
 #tabla de Jesus
 class UsuarioCultivoSerializer(serializers.ModelSerializer):
     Usuario = UsuarioSerializer(many=False)
@@ -50,14 +51,14 @@ class UsuarioCultivoSerializer(serializers.ModelSerializer):
     Cultivo = CultivoSerializer(many=False)
     class Meta:
         model = UsuarioCultivo
-        fields = ["id", "usuario","diagnostico","cultivo","imagen_usuarioCultivo"]    
+        fields = ["id", "Usuario","Diagnostico","Cultivo","imagen_usuarioCultivo"]
+    
 
 class PrevencionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prevencion
-        fields = ["id", "nombre_usuario"]    
+        fields = ["id", "nombre_usuario"]                                  
 
-                                  
 
 class TratamientoSerializer(serializers.ModelSerializer):
     class Meta:

@@ -38,9 +38,9 @@ class Diagnostico (models.Model):
 	latitud_diagnostico = models.FloatField()
 
 class UsuarioCultivo (models.Model):
-	usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
-	cultivo = models.ForeignKey(Cultivo, on_delete = models.CASCADE)
-	diagnostico = models.ForeignKey(Diagnostico, on_delete = models.CASCADE, null = True, blank=True)
+	Usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
+	Cultivo = models.ForeignKey(Cultivo, on_delete = models.CASCADE)
+	Diagnostico = models.ForeignKey(Diagnostico, on_delete = models.CASCADE, null = True, blank=True)
 	imagen_usuarioCultivo = models.ImageField(null = True, blank=True)
 	
 

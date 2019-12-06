@@ -8,5 +8,6 @@ urlpatterns = [
     path('enfermedades/', AfeccionList.as_view()),
     path('cultivos/', CultivoList.as_view()),
     path('historialgeneral/', UsuarioCultivoList.as_view()),
+    path('historial/<int:Usuario_id>', UsuarioCultivoList.as_view()),
     # url(r'^api-token-auth/', views.obtain_auth_token),
 ]

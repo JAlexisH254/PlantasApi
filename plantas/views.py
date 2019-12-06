@@ -25,7 +25,12 @@ class CultivoAfeccionList(generics.ListAPIView):
 
 class UsuarioCultivoList(generics.ListAPIView):
     serializer_class = UsuarioCultivoSerializer
-    queryset = UsuarioCultivo.objects.all()        
+    queryset = UsuarioCultivo.objects.all()
+
+    def get_queryset(self):
+        usuarioid = self.kwargs['Usuario_id']
+        u = Usuario.objects.get(id = usuarioid)
+        return UsuarioCultivo.objects.filter(Usuario_id=u)        
 
 class PrevencionList(generics.ListAPIView):
     serializer_class = PrevencionSerializer

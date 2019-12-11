@@ -52,12 +52,16 @@ class UsuarioCultivoSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsuarioCultivo
         fields = ["id", "Usuario","Diagnostico","Cultivo","imagen_usuarioCultivo"]
-    
+
+class UsuarioCultivoRegistroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UsuarioCultivo
+        fields = ["Usuario","Cultivo","imagen_usuarioCultivo"]
 
 class PrevencionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prevencion
-        fields = ["id", "nombre_usuario"]                                  
+        fields = ["id", "nombre_usuario"]
 
 
 class TratamientoSerializer(serializers.ModelSerializer):

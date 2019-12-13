@@ -7,6 +7,9 @@ class Tratamiento(models.Model):
 class Afeccion (models.Model):
 	nombre_afeccion = models.TextField (null = True, blank=True)
 	causa_afeccion = models.TextField (null = True, blank=True)
+	def __str__(self):
+		return self.nombre_afeccion
+	
 
 class Prevencion(models.Model):
 	afeccion = models.ForeignKey(Afeccion, on_delete = models.CASCADE)
@@ -26,9 +29,9 @@ class Usuario (models.Model):
 	correo_usuario = models.EmailField (null = True, blank=True)
 	telefono_usuario = models.TextField (null = True, blank=True)
 	contrasenia_usuario = models.CharField (null = True, blank=True, max_length=128)
+	imagen_usuario = models.ImageField(null = True, blank=True)
 	def __str__(self):
 		return self.nombre_usuario
-	
 
 class Diagnostico (models.Model):
 	afeccion = models.ForeignKey(Afeccion, on_delete = models.CASCADE)
@@ -42,7 +45,7 @@ class UsuarioCultivo (models.Model):
 	Cultivo = models.ForeignKey(Cultivo, on_delete = models.CASCADE)
 	Diagnostico = models.ForeignKey(Diagnostico, on_delete = models.CASCADE, null = True, blank=True)
 	imagen_usuarioCultivo = models.ImageField(null = True, blank=True)
-	
+
 
 class CultivoAfeccion(models.Model):
 	cultivo = models.ForeignKey(Cultivo, on_delete = models.CASCADE)

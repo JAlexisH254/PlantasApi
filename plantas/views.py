@@ -26,6 +26,9 @@ class CultivoAfeccionList(generics.ListAPIView):
 class UsuarioCultivoRegistrarList(generics.CreateAPIView):
     serializer_class = UsuarioCultivoRegistroSerializer
 
+class UsuarioRegistrarList(generics.CreateAPIView):
+    serializer_class = UsuarioLoginSerializer
+
 class UsuarioCultivoListTodos(generics.ListAPIView):
     serializer_class = UsuarioCultivoSerializer
     queryset = UsuarioCultivo.objects.all()

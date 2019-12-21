@@ -43,7 +43,13 @@ class DiagnosticoSerializer(serializers.ModelSerializer):
    afeccion = BusquedaAfeccionSerializer(many=False)
    class Meta:
         model = Diagnostico
-        fields = ["id", "afeccion"]  
+        fields = ["id", "afeccion","fecha_diagnostico"]  
+
+
+class DiagnosticoRegistroSerializer(serializers.ModelSerializer):
+   class Meta:
+        model = Diagnostico
+        fields = ["id", "afeccion","fecha_diagnostico"]  
 
 
 #tabla de Jesus
@@ -58,7 +64,7 @@ class UsuarioCultivoSerializer(serializers.ModelSerializer):
 class UsuarioCultivoRegistroSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsuarioCultivo
-        fields = ["Usuario","Cultivo","imagen_usuarioCultivo"]
+        fields = ["id", "Usuario","Cultivo","imagen_usuarioCultivo"]
 
 class PrevencionSerializer(serializers.ModelSerializer):
     class Meta:

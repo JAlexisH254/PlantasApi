@@ -11,5 +11,6 @@ urlpatterns = [
     path('historial/<int:Usuario_id>', UsuarioCultivoList.as_view()),
     path('historialregistro/', UsuarioCultivoRegistrarList.as_view()),
     path('usuarioregistro/', UsuarioRegistrarList.as_view()),
+    path('diagnosticolista/', DiagnosticoList.as_view()),
     # url(r'^api-token-auth/', views.obtain_auth_token),
 ]

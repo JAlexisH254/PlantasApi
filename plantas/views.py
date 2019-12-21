@@ -26,6 +26,15 @@ class CultivoAfeccionList(generics.ListAPIView):
 class UsuarioCultivoRegistrarList(generics.CreateAPIView):
     serializer_class = UsuarioCultivoRegistroSerializer
 
+    def perform_create(self, serializer):
+        uc = serializer.save()
+        #Busco su afeccion
+        a = Afeccion.objects.get(id=1)
+        d = Diagnostico(afeccion=a, fecha=datetime.today, hora=datetime.now)
+        d.save()
+        uc.Diagnostico = d
+        uc.save()
+
 class UsuarioRegistrarList(generics.CreateAPIView):
     serializer_class = UsuarioLoginSerializer
 
@@ -47,6 +56,10 @@ class PrevencionList(generics.ListAPIView):
     queryset = Prevencion.objects.all()
 
 class DiagnosticoList(generics.ListAPIView):
+    serializer_class = DiagnosticoSerializer
+    queryset = Diagnostico.objects.all()
+
+class DiagnosticoRegistroList(generics.CreateAPIView):
     serializer_class = DiagnosticoSerializer
     queryset = Diagnostico.objects.all()
 

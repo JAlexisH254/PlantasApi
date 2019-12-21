@@ -35,10 +35,10 @@ class Usuario (models.Model):
 
 class Diagnostico (models.Model):
 	afeccion = models.ForeignKey(Afeccion, on_delete = models.CASCADE)
-	fecha_diagnostico = models.DateTimeField()
-	hora_diagnostico = models.DateField()
-	longitud_diagnostico = models.FloatField()
-	latitud_diagnostico = models.FloatField()
+	fecha_diagnostico = models.DateTimeField(null = True, blank=True)
+	hora_diagnostico = models.DateField(null = True, blank=True)
+	longitud_diagnostico = models.FloatField(null = True, blank=True)
+	latitud_diagnostico = models.FloatField(null = True, blank=True)
 
 class UsuarioCultivo (models.Model):
 	Usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)

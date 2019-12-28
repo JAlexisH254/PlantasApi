@@ -30,7 +30,9 @@ class UsuarioCultivoRegistrarList(generics.CreateAPIView):
         uc = serializer.save()
         #Busco su afeccion
         a = Afeccion.objects.get(id=1)
-        d = Diagnostico(afeccion=a, fecha=datetime.today, hora=datetime.now)
+        #fecha=datetime.today, hora=datetime.now
+        #d = Diagnostico(afeccion=a, fecha=datetime.today, hora=datetime.now)
+        d = Diagnostico(afeccion=a)
         d.save()
         uc.Diagnostico = d
         uc.save()

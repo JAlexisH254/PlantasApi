@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from plantas.serializers import *
+from datetime import *
 #AfeccionSerializer,CultivoSerializer,UsuarioSerializer, CultivoAfeccionSerializer, UsuarioCultivoSerializer, PrevencionSerializer, DiagnosticoSerializer, TratamientoSerializer, TratamientoAfeccionSerializer 
 from plantas.models import *
 #Afeccion, Cultivo, Usuario, CultivoAfeccion, UsuarioCultivo, Prevencion, Diagnostico, Tratamiento, TratamientoAfeccion 
@@ -31,8 +32,8 @@ class UsuarioCultivoRegistrarList(generics.CreateAPIView):
         #Busco su afeccion
         a = Afeccion.objects.get(id=1)
         #fecha=datetime.today, hora=datetime.now
-        #d = Diagnostico(afeccion=a, fecha=datetime.today, hora=datetime.now)
-        d = Diagnostico(afeccion=a)
+        d = Diagnostico(afeccion=a, fecha_diagnostico=datetime.today(), hora_diagnostico=datetime.now())
+        # d = Diagnostico(afeccion=a)
         d.save()
         uc.Diagnostico = d
         uc.save()

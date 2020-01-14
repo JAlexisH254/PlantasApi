@@ -27,12 +27,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
         model = Usuario
         fields = [ "id", "correo_usuario", "contrasenia_usuario", "nombre_usuario" , "telefono_usuario","imagen_usuario"]
 
-
+# 
 class UsuarioLoginSerializer(serializers.ModelSerializer):
-    Usuario = UsuarioSerializer(many=False)
     class Meta:
         model = Usuario
-        fields = [ "Usuario"]
+        fields = ["id", "correo_usuario", "contrasenia_usuario", "nombre_usuario" , "telefono_usuario","imagen_usuario"]
 
 class CultivoAfeccionSerializer(serializers.ModelSerializer):
     class Meta:

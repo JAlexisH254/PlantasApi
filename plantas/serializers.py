@@ -61,6 +61,7 @@ class UsuarioCultivoSerializer(serializers.ModelSerializer):
         fields = ["id", "Usuario","Diagnostico","Cultivo","imagen_usuarioCultivo"]
 
 class UsuarioCultivoRegistroSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = UsuarioCultivo
         fields = ["id", "Usuario","Cultivo","imagen_usuarioCultivo"]

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from plantas.serializers import *
 from datetime import *
+from rest_framework.views import APIView
+from rest_framework.response import Response
 #AfeccionSerializer,CultivoSerializer,UsuarioSerializer, CultivoAfeccionSerializer, UsuarioCultivoSerializer, PrevencionSerializer, DiagnosticoSerializer, TratamientoSerializer, TratamientoAfeccionSerializer 
 from plantas.models import *
 #Afeccion, Cultivo, Usuario, CultivoAfeccion, UsuarioCultivo, Prevencion, Diagnostico, Tratamiento, TratamientoAfeccion 
@@ -74,3 +76,30 @@ class TratamientoAfeccionList(generics.ListAPIView):
     serializer_class = TratamientoAfeccionSerializer
     queryset = TratamientoAfeccion.objects.all()
 
+class RegistrarDiagnosticoCultivo(APIView):
+    
+     def post(self, request, format=None):
+        print(request.data)
+        usuario = request.data["usuario"]
+        enfermedad = request.data["enfermedad"]
+        afecciones = Afeccion.objects.all()
+        for a in afecciones:
+            if a.nombre_afeccion == enfermedad:
+                enf = a
+
+        cultivo = request.data["cultivo"]
+        diagnostico = Diagnostico()
+        diagnostico.afeccion = enf
+        diagnostico.fecha_diagnostico = datetime.today()
+        diagnostico.hora_diagnostico = datetime.now()
+        diagnostico.save()
+        # imagen = request.data["imagen"]
+
+
+        u = UsuarioCultivo() #llenas los valores
+        u.Usuario = Usuario.objects.get(pk=usuario)
+        u.Cultivo = Cultivo.objects.get(pk=cultivo)
+        u.Diagnostico = diagnostico
+        # u.imagen_usuarioCultivo = imagen.objects.filter(main=True)
+        u.save()
+        return Response({"response" : "ok"})

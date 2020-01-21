@@ -4,6 +4,7 @@ from plantas.serializers import *
 from datetime import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.parsers import *
 #AfeccionSerializer,CultivoSerializer,UsuarioSerializer, CultivoAfeccionSerializer, UsuarioCultivoSerializer, PrevencionSerializer, DiagnosticoSerializer, TratamientoSerializer, TratamientoAfeccionSerializer 
 from plantas.models import *
 #Afeccion, Cultivo, Usuario, CultivoAfeccion, UsuarioCultivo, Prevencion, Diagnostico, Tratamiento, TratamientoAfeccion 
@@ -77,7 +78,7 @@ class TratamientoAfeccionList(generics.ListAPIView):
     queryset = TratamientoAfeccion.objects.all()
 
 class RegistrarDiagnosticoCultivo(APIView):
-    
+
      def post(self, request, format=None):
         print(request.data)
         usuario = request.data["usuario"]
@@ -88,18 +89,18 @@ class RegistrarDiagnosticoCultivo(APIView):
                 enf = a
 
         cultivo = request.data["cultivo"]
+        imagen = request.data['image']
         diagnostico = Diagnostico()
         diagnostico.afeccion = enf
         diagnostico.fecha_diagnostico = datetime.today()
         diagnostico.hora_diagnostico = datetime.now()
         diagnostico.save()
-        # imagen = request.data["imagen"]
 
 
         u = UsuarioCultivo() #llenas los valores
         u.Usuario = Usuario.objects.get(pk=usuario)
         u.Cultivo = Cultivo.objects.get(pk=cultivo)
         u.Diagnostico = diagnostico
-        # u.imagen_usuarioCultivo = imagen.objects.filter(main=True)
+        u.imagen_usuarioCultivo = imagen
         u.save()
         return Response({"response" : "ok"})

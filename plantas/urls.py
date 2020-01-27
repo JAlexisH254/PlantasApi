@@ -6,6 +6,7 @@ from plantas.views import *
 
 urlpatterns = [
     path('enfermedades/', AfeccionList.as_view()),
+    path('enfermedades/<int:Afeccion_id>', AfeccionidList.as_view()),
     path('cultivos/', CultivoList.as_view()),
     path('historialgeneral/', UsuarioCultivoListTodos.as_view()),
     path('historial/<int:Usuario_id>', UsuarioCultivoList.as_view()),

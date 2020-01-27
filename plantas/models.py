@@ -5,8 +5,11 @@ class Tratamiento(models.Model):
 	descripcion_tratamiento = models.TextField (null = True, blank=True)
 
 class Afeccion (models.Model):
+	imagen_afeccion = models.ImageField(null = True, blank=True)
 	nombre_afeccion = models.TextField (null = True, blank=True)
+	descripcion_efeccion = models.TextField (null = True, blank=True)
 	causa_afeccion = models.TextField (null = True, blank=True)
+	prevencion_afeccion = models.TextField (null = True, blank=True)
 	def __str__(self):
 		return self.nombre_afeccion
 	

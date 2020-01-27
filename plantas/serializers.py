@@ -6,7 +6,7 @@ from plantas.models import Afeccion, Cultivo, Usuario, CultivoAfeccion, UsuarioC
 class BusquedaAfeccionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Afeccion
-        fields = ["id", "nombre_afeccion", "causa_afeccion"]
+        fields = ["id","imagen_afeccion","nombre_afeccion","descripcion_efeccion","causa_afeccion","causa_afeccion","prevencion_afeccion"]
 
 class CultivoSerializer(serializers.ModelSerializer):
     class Meta:

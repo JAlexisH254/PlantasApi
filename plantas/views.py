@@ -15,6 +15,15 @@ class AfeccionList(generics.ListAPIView):
     serializer_class = BusquedaAfeccionSerializer
     queryset = Afeccion.objects.all()
 
+class AfeccionidList(generics.ListAPIView):
+    serializer_class = BusquedaAfeccionSerializer
+    queryset = Afeccion.objects.all()
+
+    def get_queryset(self):
+        afeccionid = self.kwargs['Afeccion_id']
+        u = Afeccion.objects.filter(id = afeccionid)
+        return u
+
 class CultivoList(generics.ListAPIView):
     serializer_class = CultivoSerializer
     queryset = Cultivo.objects.all()
@@ -103,4 +112,7 @@ class RegistrarDiagnosticoCultivo(APIView):
         u.Diagnostico = diagnostico
         u.imagen_usuarioCultivo = imagen
         u.save()
-        return Response({"response" : "ok"})
+        return Response({"response" : u.Diagnostico.afeccion.id,
+                        "descripcion" : u.Diagnostico.afeccion.descripcion_efeccion,
+                        "causa" : u.Diagnostico.afeccion.causa_afeccion,
+                        "prevencion" : u.Diagnostico.afeccion.prevencion_afeccion })

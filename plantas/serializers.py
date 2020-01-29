@@ -42,7 +42,7 @@ class DiagnosticoSerializer(serializers.ModelSerializer):
    afeccion = BusquedaAfeccionSerializer(many=False)
    class Meta:
         model = Diagnostico
-        fields = ["id", "afeccion","fecha_diagnostico"]  
+        fields = ["id", "afeccion","fecha_diagnostico", "hora_diagnostico"]  
 
 
 class DiagnosticoRegistroSerializer(serializers.ModelSerializer):
